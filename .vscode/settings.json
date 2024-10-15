@@ -1,7 +1,10 @@
 {
 	"files.associations": {
 		"stddef.h": "c",
-		"libft.h": "c"
+		"libft.h": "c",
+		"random": "c",
+		"stdlib.h": "c",
+		"queue": "c"
 	},
 	"[c]": {
 		"editor.defaultFormatter": "keyhr.42-c-format"
