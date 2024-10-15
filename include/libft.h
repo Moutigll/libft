@@ -6,7 +6,7 @@
 /*   By: ele-lean <ele-lean@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 14:47:48 by ele-lean          #+#    #+#             */
-/*   Updated: 2024/10/15 18:46:13 by ele-lean         ###   ########.fr       */
+/*   Updated: 2024/10/15 20:19:36 by ele-lean         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 typedef unsigned long	t_size;
 
+//Part1
 int				ft_atoi(char *str);
 void			*ft_bzero(void *s, t_size n);
 void			*ft_calloc(t_size nmemb, t_size size);
@@ -37,3 +38,6 @@ char			*ft_strnstr(const char *big, const char *little, t_size len);
 char			*ft_strrchr(const char *s, int c);
 int				ft_tolower(int c);
 int				ft_toupper(int c);
+//Part2
+char			*ft_substr(char const *s, unsigned int start, t_size len);
+char			*ft_strjoin(char const *s1, char const *s2);

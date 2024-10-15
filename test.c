@@ -6,7 +6,7 @@
 /*   By: ele-lean <ele-lean@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 17:38:43 by ele-lean          #+#    #+#             */
-/*   Updated: 2024/10/15 19:16:39 by ele-lean         ###   ########.fr       */
+/*   Updated: 2024/10/15 20:28:36 by ele-lean         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -243,6 +243,26 @@ void	test_ft_toupper(void)
 	printf("ft_toupper('z') = '%c' (Expected: 'Z')\n", ft_toupper('z'));
 	printf("ft_toupper('A') = '%c' (Expected: 'A')\n", ft_toupper('A'));
 }
+//Test of the Part2
+void	test_ft_substr()
+{
+	const char *chain = "Hello world!";
+
+	printf("\n(1/11)Testing ft_substr\n");
+	printf("ft_substr(%s, 3, 5) = '%s' (Expected: 'lo wo')\n", chain, ft_substr(chain, 3, 5));
+	printf("ft_substr(%s, 3, 100) = '%s' (Expected: 'lo world!')\n", chain, ft_substr(chain, 3, 100));
+	printf("ft_substr(\"\", 3, 5) = '%s' (Expected: '')\n", ft_substr("", 3, 5));
+	printf("ft_substr(%s, 100, 5) = '%s' (Expected: '')\n", chain, ft_substr(chain, 100, 5));
+}
+
+void	test_ft_strjoin()
+{
+	printf("\n(2/11)Testing ft_strjoin\n");
+	printf("ft_strjoin(\"Hello \", \"world!\") = '%s' (Expected: 'Hello world!')\n", ft_strjoin("Hello ", "world!"));
+	printf("ft_strjoin(\"\", \"world!\") = '%s' (Expected: 'world!')\n", ft_strjoin("", "world!"));
+	printf("ft_strjoin(\"Hello \", \"\") = '%s' (Expected: 'Hello ')\n", ft_strjoin("Hello ", ""));
+	printf("ft_strjoin(\"\", \"\") = '%s' (Expected: '')\n", ft_strjoin("", ""));
+}
 
 int	main(void)
 {
@@ -270,5 +290,8 @@ int	main(void)
 	test_ft_strrchr();
 	test_ft_tolower();
 	test_ft_toupper();
+	printf("\nTEST PART2\n");
+	test_ft_substr();
+	test_ft_strjoin();
 	return (0);
 }
