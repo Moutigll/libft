@@ -6,7 +6,7 @@
 /*   By: ele-lean <ele-lean@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 17:38:43 by ele-lean          #+#    #+#             */
-/*   Updated: 2024/10/16 12:42:56 by ele-lean         ###   ########.fr       */
+/*   Updated: 2024/10/16 15:11:38 by ele-lean         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -337,6 +337,68 @@ void	test_ft_split(void)
 	ft_free_split(result, i);
 }
 
+void	test_ft_itoa(void)
+{
+	printf("\n(5/11)Testing ft_itoa:\n");
+	printf("ft_itoa(42) = '%s' (Expected: '42')\n", ft_itoa(42));
+	printf("ft_itoa(-42) = '%s' (Expected: '-42')\n", ft_itoa(-42));
+	printf("ft_itoa(-0) = '%s' (Expected: '0')\n", ft_itoa(-0));
+	printf("ft_itoa(-2147483648) = '%s' (Expected: '-2147483648')\n", ft_itoa(-2147483648));
+	printf("ft_itoa(2147483647) = '%s' (Expected: '2147483647')\n", ft_itoa(2147483647));
+}
+char	fttoupper(unsigned int index, char c)
+{
+	if (c >= 'a' && c <= 'z')
+		return (c - 32);
+	return (c);
+}
+void	test_ft_strmapi(void)
+{
+	printf("\n(6/11)Testing ft_strmapi:\n");
+	char	*result1 = ft_strmapi("hello", fttoupper);
+	printf("ft_strmapi(\"hello\", ft_toupper) = \"%s\" (Expected: \"HELLO\")\n", result1);
+	free(result1);
+	char	*result3 = ft_strmapi("", fttoupper);
+	printf("ft_strmapi(\"\", ft_toupper) = \"%s\" (Expected: \"\")\n", result3);
+	free(result3);
+	char	*result4 = ft_strmapi("a!@#$%", fttoupper);
+	printf("ft_strmapi(\"a!@#$\", ft_toupper) = \"%s\" (Expected: \"A!@#$\")\n", result4);
+	free(result4);
+	char	*result5 = ft_strmapi(NULL, fttoupper);
+	printf("ft_strmapi(NULL, ft_toupper) = \"%s\" (Expected: NULL)\n", result5);
+	free(result5);
+	char	*result6 = ft_strmapi("test", NULL);
+	printf("ft_strmapi(\"test\", NULL) = \"%s\" (Expected: NULL)\n", result6);
+	free(result6);
+}
+
+void	ftttoupper(unsigned int index, char *c)
+{
+	if (*c >= 'a' && *c <= 'z')
+	{
+		*c = *c - 32;
+	}
+}
+
+void test_ft_striteri(void)
+{
+	char	str1[] = "hello";
+	char	str2[] = "world";
+
+	printf("\n(7/11)Testing ft_striteri:\n");
+	ft_striteri(str1, ftttoupper);
+	printf("After ft_striteri on \"hello\": \"%s\" (Expected: \"HELLO\")\n", str1);
+	ft_striteri(str2, ftttoupper);
+	printf("After ft_striteri on \"world\": \"%s\" (Expected: \"WORLD\")\n", str2);
+	char	str3[] = "Hello World!";
+	ft_striteri(str3, ftttoupper);
+	printf("After ft_striteri on \"Hello World!\": \"%s\" (Expected: \"HELLO WORLD!\")\n", str3);
+	char	str4[] = "";
+	ft_striteri(str4, ftttoupper);
+	printf("After ft_striteri on empty string: \"%s\" (Expected: \"\")\n", str4);
+}
+
+
 int	main(void)
 {
 	printf("TEST PART1\n");
@@ -368,5 +430,8 @@ int	main(void)
 	test_ft_strjoin();
 	test_ft_strtrim();
 	test_ft_split();
+	test_ft_itoa();
+	test_ft_strmapi();
+	test_ft_striteri();
 	return (0);
 }
