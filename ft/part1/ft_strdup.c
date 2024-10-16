@@ -6,12 +6,11 @@
 /*   By: ele-lean <ele-lean@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/15 15:27:37 by ele-lean          #+#    #+#             */
-/*   Updated: 2024/10/15 18:46:20 by ele-lean         ###   ########.fr       */
+/*   Updated: 2024/10/16 16:32:33 by ele-lean         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
 
 char	*ft_strdup(const char *src)
 {

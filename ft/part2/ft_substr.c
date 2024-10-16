@@ -6,12 +6,11 @@
 /*   By: ele-lean <ele-lean@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 15:31:47 by ele-lean          #+#    #+#             */
-/*   Updated: 2024/10/15 20:04:30 by ele-lean         ###   ########.fr       */
+/*   Updated: 2024/10/16 16:30:32 by ele-lean         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {

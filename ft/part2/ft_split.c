@@ -6,12 +6,11 @@
 /*   By: ele-lean <ele-lean@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 11:02:29 by ele-lean          #+#    #+#             */
-/*   Updated: 2024/10/16 12:27:11 by ele-lean         ###   ########.fr       */
+/*   Updated: 2024/10/16 16:30:54 by ele-lean         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
 
 static int	count_words(const char *s, char c)
 {

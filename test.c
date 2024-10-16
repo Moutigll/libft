@@ -6,15 +6,13 @@
 /*   By: ele-lean <ele-lean@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 17:38:43 by ele-lean          #+#    #+#             */
-/*   Updated: 2024/10/16 15:57:34 by ele-lean         ###   ########.fr       */
+/*   Updated: 2024/10/16 19:54:40 by ele-lean         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include/libft.h"
 #include <stdio.h>
-#include <stdlib.h>
 #include <fcntl.h>
-#include <unistd.h>
 
 void	test_ft_atoi(void)
 {
@@ -473,9 +471,208 @@ void test_ft_putnbr_fd(void)
 	unlink("test_output.txt");
 }
 
+void	test_ft_lstnew(void)
+{
+	printf("\n(1/9) Testing ft_lstnew:\n");
+	char	*content1 = "Hello, world!";
+	t_list *node1 = ft_lstnew(content1);
+	if (node1 && node1->content == content1 && node1->next == NULL)
+		printf("Test 1 passed: content = '%s', next = %p\n", (char *)node1->content, node1->next);
+	else
+		printf("Test 1 failed\n");
+	int	content2 = 42;
+	t_list *node2 = ft_lstnew(&content2);
+	if (node2 && *(int *)(node2->content) == content2 && node2->next == NULL)
+		printf("Test 2 passed: content = %d, next = %p\n", *(int *)(node2->content), node2->next);
+	else
+		printf("Test 2 failed\n");
+	t_list *node3 = ft_lstnew(NULL);
+	if (node3 && node3->content == NULL && node3->next == NULL)
+		printf("Test 3 passed: content = NULL, next = %p\n", node3->next);
+	else
+		printf("Test 3 failed\n");
+	free(node1);
+	free(node2);
+	free(node3);
+}
+
+void	test_ft_lstadd_front(void)
+{
+	printf("\n(2/9) Testing ft_lstadd_front:\n");
+	t_list	*head = NULL;
+	char	*content1 = "First node";
+	t_list	*node1 = ft_lstnew(content1);
+	printf("Test 1: Adding to an empty list\n");
+	ft_lstadd_front(&head, node1);
+	if (head == node1 && head->content == content1 && head->next == NULL)
+		printf("Test 1 passed: content = '%s', next = %p\n", (char *)head->content, head->next);
+	else
+		printf("Test 1 failed\n");
+	char	*content2 = "New first node";
+	t_list	*node2 = ft_lstnew(content2);
+	printf("Test 2: Adding to a non-empty list\n");
+	ft_lstadd_front(&head, node2);
+	if (head == node2 && head->content == content2 && head->next == node1)
+		printf("Test 2 passed: content = '%s', next content = '%s'\n", (char *)head->content, (char *)head->next->content);
+	else
+		printf("Test 2 failed\n");
+	free(node1);
+	free(node2);
+}
+
+void	free_list(t_list *lst)
+{
+	t_list	*temp;
+
+	while (lst)
+	{
+		temp = lst->next;
+		free(lst);
+		lst = temp;
+	}
+}
+
+void	test_ft_lstsize(void)
+{
+	printf("\n(3/9) Testing ft_lstsize:\n");
+	t_list	*elem1 = ft_lstnew("Element 1");
+	t_list	*elem2 = ft_lstnew("Element 2");
+	t_list	*elem3 = ft_lstnew("Element 3");
+
+	ft_lstadd_front(&elem1, elem2);
+	ft_lstadd_front(&elem1, elem3);
+	int size = ft_lstsize(elem1);
+	printf("List size: %d (Expected: 3)\n", size);
+	t_list	*empty_list = NULL;
+	size = ft_lstsize(empty_list);
+	printf("Empty list size: %d (Expected: 0)\n", size);
+	free_list(elem1);
+}
+void test_ft_lstlast(void)
+{
+	printf("\n(4/9) Testing ft_lstlast:\n");
+	t_list	*elem1 = ft_lstnew("First");
+	t_list	*elem2 = ft_lstnew("Second");
+	t_list	*elem3 = ft_lstnew("Third");
+
+	elem1->next = elem2;
+	elem2->next = elem3;
+	elem3->next = NULL;
+	t_list	*last = ft_lstlast(elem1);
+	if (last)
+		printf("Last element content: %s (Expected: 'Third')\n", (char *)last->content);
+	else
+		printf("List is empty (Expected: 'Third')\n");
+	free(elem1);
+	free(elem2);
+	free(elem3);
+}
+void test_ft_lstadd_back(void)
+{
+	printf("\n(5/9) Testing ft_lstadd_back:\n");
+	t_list	*list = NULL;
+	t_list	*elem1 = ft_lstnew("First");
+	t_list	*elem2 = ft_lstnew("Second");
+
+	ft_lstadd_back(&list, elem1);
+	printf("Added: %s\n", (char *)list->content);
+	ft_lstadd_back(&list, elem2);
+	printf("Added: %s\n", (char *)list->next->content);
+	free_list(list);
+}
+
+void	del_content(void *content)
+{
+	free(content);
+}
+
+void	test_ft_lstdelone(void)
+{
+	printf("\n(6/9) Testing ft_lstdelone:\n");
+	char	*content = malloc(20 * sizeof(char));
+	ft_strlcpy(content, "Hello, world!", 13);
+	t_list	*node = ft_lstnew(content);
+	ft_lstdelone(node, del_content);
+	printf("Node deleted successfully.\n");
+}
+
+void	test_ft_lstclear(void)
+{
+	printf("\n(7/9) Testing ft_lstclear:\n");
+	t_list	*node1 = ft_lstnew(malloc(20));
+	ft_strlcpy(node1->content, "Node 1", 20);
+	t_list	*node2 = ft_lstnew(malloc(20));
+	ft_strlcpy(node2->content, "Node 2", 20);
+	t_list	*node3 = ft_lstnew(malloc(20));
+	ft_strlcpy(node3->content, "Node 3", 20);
+	node1->next = node2;
+	node2->next = node3;
+	node3->next = NULL;
+	ft_lstclear(&node1, del_content);
+	if (node1 == NULL)
+		printf("List cleared successfully.\n");
+	else
+		printf("List not cleared: first node still exists.\n");
+}
+
+void to_uppercase(void *content)
+{
+	char	*str = (char *)content;
+	for (int i = 0; str[i] != '\0'; i++)
+	{
+		if (str[i] >= 'a' && str[i] <= 'z')
+			str[i] -= 32;
+	}
+}
+
+void test_ft_lstiter(void)
+{
+	printf("\n(8/9) Testing ft_lstiter:\n");
+	t_list *node1 = ft_lstnew(malloc(20));
+	ft_strlcpy(node1->content, "hello", 20);
+	t_list *node2 = ft_lstnew(malloc(20));
+	ft_strlcpy(node2->content, "world", 20);
+	node1->next = node2;
+	node2->next = NULL;
+	ft_lstiter(node1, to_uppercase);
+	printf("First node content: %s (Expected: HELLO)\n", (char *)node1->content);
+	printf("Second node content: %s (Expected: WORLD)\n", (char *)node2->content);
+	free(node1->content);
+	free(node1);
+	free(node2->content);
+	free(node2);
+}
+
+void *double_value(void *content)
+{
+	int *new_content = malloc(sizeof(int));
+	if (new_content)
+		*new_content = (*(int *)content) * 2; // Double la valeur
+	return new_content;
+}
+
+void	test_ft_lstmap(void)
+{
+	printf("\n(9/9) Testing ft_lstmap:\n");
+	t_list *node1 = ft_lstnew(malloc(sizeof(int)));
+	*(int *)(node1->content) = 1;
+	t_list *node2 = ft_lstnew(malloc(sizeof(int)));
+	*(int *)(node2->content) = 2;
+	node1->next = node2;
+	node2->next = NULL;
+	t_list *new_list = ft_lstmap(node1, double_value, del_content);
+	printf("First new node content: %d (Expected: 2)\n", *(int *)(new_list->content));
+	printf("Second new node content: %d (Expected: 4)\n", *(int *)(new_list->next->content));
+	ft_lstclear(&new_list, del_content);
+	free(node1->content);
+	free(node1);
+	free(node2->content);
+	free(node2);
+}
+
 int	main(void)
 {
-	printf("TEST PART1\n");
+	printf("##############################TEST PART1##############################\n");
 	test_ft_atoi();
 	test_ft_bzero();
 	test_ft_calloc();
@@ -499,7 +696,7 @@ int	main(void)
 	test_ft_strrchr();
 	test_ft_tolower();
 	test_ft_toupper();
-	printf("\nTEST PART2\n");
+	printf("\n##############################TEST PART2##############################\n");
 	test_ft_substr();
 	test_ft_strjoin();
 	test_ft_strtrim();
@@ -511,5 +708,15 @@ int	main(void)
 	test_ft_putstr_fd();
 	test_ft_putendl_fd();
 	test_ft_putnbr_fd();
+	printf("\n##############################TEST BONUS##############################\n");
+	test_ft_lstnew();
+	test_ft_lstadd_front();
+	test_ft_lstsize();
+	test_ft_lstlast();
+	test_ft_lstadd_back();
+	test_ft_lstdelone();
+	test_ft_lstclear();
+	test_ft_lstiter();
+	test_ft_lstmap();
 	return (0);
 }

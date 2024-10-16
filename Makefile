@@ -4,6 +4,7 @@ NAME = libft.a
 
 PART1_DIR = ft/part1
 PART2_DIR = ft/part2
+PART_BONUS_DIR = ft/bonus
 INCLUDE_DIR = include
 
 PART1_SRCS = ft_atoi.c ft_isalpha.c ft_memchr.c ft_memset.c ft_strlcpy.c \
@@ -15,26 +16,40 @@ PART1_SRCS = ft_atoi.c ft_isalpha.c ft_memchr.c ft_memset.c ft_strlcpy.c \
 PART2_SRCS = ft_substr.c ft_strjoin.c ft_strtrim.c ft_split.c ft_itoa.c ft_strmapi.c \
 			 ft_striteri.c ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c
 
+PART_BONUS_SRCS = ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c \
+				  ft_lstadd_back.c ft_lstdelone.c ft_lstclear.c ft_lstiter.c \
+				  ft_lstmap.c
+
 PART1_OBJS = $(addprefix $(PART1_DIR)/, $(PART1_SRCS:.c=.o))
 PART2_OBJS = $(addprefix $(PART2_DIR)/, $(PART2_SRCS:.c=.o))
+PART_BONUS_OBJS = $(addprefix $(PART_BONUS_DIR)/, $(PART_BONUS_SRCS:.c=.o))
 
 OBJS = $(PART1_OBJS) $(PART2_OBJS)
+BONUS_OBJS = $(OBJS) $(PART_BONUS_OBJS)
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
 	ar rcs $(NAME) $(OBJS)
 
-$(PART1_DIR)/%.o: $(PART1_DIR)/%.c
+bonus: $(BONUS_OBJS)
+	ar rcs $(NAME) $(BONUS_OBJS)
+
+$(PART1_DIR)/%.o: $(PART1_DIR)/%.c $(INCLUDE_DIR)/libft.h
 	$(CC) $(CFLAGS) -I$(INCLUDE_DIR) -c $< -o $@
 
-$(PART2_DIR)/%.o: $(PART2_DIR)/%.c
+$(PART2_DIR)/%.o: $(PART2_DIR)/%.c $(INCLUDE_DIR)/libft.h
+	$(CC) $(CFLAGS) -I$(INCLUDE_DIR) -c $< -o $@
+
+$(PART_BONUS_DIR)/%.o: $(PART_BONUS_DIR)/%.c $(INCLUDE_DIR)/libft.h
 	$(CC) $(CFLAGS) -I$(INCLUDE_DIR) -c $< -o $@
 
 clean:
-	rm -f $(OBJS)
+	rm -f $(PART1_OBJS) $(PART2_OBJS) $(PART_BONUS_OBJS)
 
 fclean: clean
 	rm -f $(NAME)
 
 re: fclean all
+
+.PHONY: all bonus clean fclean re

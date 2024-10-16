@@ -6,12 +6,11 @@
 /*   By: ele-lean <ele-lean@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 20:12:43 by ele-lean          #+#    #+#             */
-/*   Updated: 2024/10/15 20:19:08 by ele-lean         ###   ########.fr       */
+/*   Updated: 2024/10/16 16:30:48 by ele-lean         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
