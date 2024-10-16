@@ -6,7 +6,7 @@
 /*   By: ele-lean <ele-lean@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 17:38:43 by ele-lean          #+#    #+#             */
-/*   Updated: 2024/10/15 20:28:36 by ele-lean         ###   ########.fr       */
+/*   Updated: 2024/10/16 12:42:56 by ele-lean         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -244,7 +244,7 @@ void	test_ft_toupper(void)
 	printf("ft_toupper('A') = '%c' (Expected: 'A')\n", ft_toupper('A'));
 }
 //Test of the Part2
-void	test_ft_substr()
+void	test_ft_substr(void)
 {
 	const char *chain = "Hello world!";
 
@@ -255,13 +255,86 @@ void	test_ft_substr()
 	printf("ft_substr(%s, 100, 5) = '%s' (Expected: '')\n", chain, ft_substr(chain, 100, 5));
 }
 
-void	test_ft_strjoin()
+void	test_ft_strjoin(void)
 {
 	printf("\n(2/11)Testing ft_strjoin\n");
 	printf("ft_strjoin(\"Hello \", \"world!\") = '%s' (Expected: 'Hello world!')\n", ft_strjoin("Hello ", "world!"));
 	printf("ft_strjoin(\"\", \"world!\") = '%s' (Expected: 'world!')\n", ft_strjoin("", "world!"));
 	printf("ft_strjoin(\"Hello \", \"\") = '%s' (Expected: 'Hello ')\n", ft_strjoin("Hello ", ""));
 	printf("ft_strjoin(\"\", \"\") = '%s' (Expected: '')\n", ft_strjoin("", ""));
+}
+
+void	test_ft_strtrim(void)
+{
+	printf("\n(3/11)Testing ft_strtrim\n");
+	printf("ft_strtrim(\"**Hello World*-*\", \"*-\"): '%s' (Expected: 'Hello World')\n", ft_strtrim("**Hello World*-*", "*-"));
+	printf("ft_strtrim(\"Hello\", \"\") '%s' (Expected: 'Hello')\n", ft_strtrim("Hello", ""));
+	printf("ft_strtrim(\"\", \" \") '%s' (Expected: '')\n", ft_strtrim("", " "));
+
+}
+void	ft_free_split(char **split, int words)
+{
+	int	i;
+
+	i = 0;
+	while (i < words)
+	{
+		free(split[i]);
+		i++;
+	}
+	free(split);
+}
+
+void	test_ft_split(void)
+{
+	char	**result;
+	int		i;
+
+	printf("\n(4/11)Testing ft_split\n");
+	result = ft_split("Hello world this is a test", ' ');
+	printf("ft_split(\"Hello world this is a test\", ' ') Expected: ['Hello', 'world', 'this', 'is', 'a', 'test', NULL]\n");
+	i = 0;
+	while (result[i])
+	{
+		printf("result[%d] = '%s'\n", i, result[i]);
+		i++;
+	}
+	printf("result[%d] = '%s'\n", i, result[i]);
+	ft_free_split(result, i);
+	result = ft_split("  Hello  world  this  is  a  test  ", ' ');
+	printf("\nft_split(\"  Hello  world  this  is  a  test  \", ' ') Expected: ['Hello', 'world', 'this', 'is', 'a', 'test', NULL]\n");
+	i = 0;
+	while (result[i])
+	{
+		printf("result[%d] = '%s'\n", i, result[i]);
+		i++;
+	}
+	printf("result[%d] = '%s'\n", i, result[i]);
+	ft_free_split(result, i);
+	result = ft_split("NoDelimiterHere", ' ');
+	printf("\nft_split(\"NoDelimiterHere\", ' ') Expected: ['NoDelimiterHere', NULL]\n");
+	i = 0;
+	while (result[i])
+	{
+		printf("result[%d] = '%s'\n", i, result[i]);
+		i++;
+	}
+	printf("result[%d] = '%s'\n", i, result[i]);
+	ft_free_split(result, i);
+	result = ft_split("", ' ');
+	printf("\nft_split(\"\", ' ') Expected: [NULL]\n");
+	if (result[0] == NULL)
+		printf("Result is NULL as expected\n");
+	else
+		printf("Unexpected result\n");
+	ft_free_split(result, i);
+	result = ft_split("   ", ' ');
+	printf("\nft_split(\"   \", ' ') Expected: [NULL]\n");
+	if (result[0] == NULL)
+		printf("Result is NULL as expected\n");
+	else
+		printf("Unexpected result\n");
+	ft_free_split(result, i);
 }
 
 int	main(void)
@@ -293,5 +366,7 @@ int	main(void)
 	printf("\nTEST PART2\n");
 	test_ft_substr();
 	test_ft_strjoin();
+	test_ft_strtrim();
+	test_ft_split();
 	return (0);
 }
