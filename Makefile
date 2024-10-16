@@ -13,7 +13,7 @@ PART1_SRCS = ft_atoi.c ft_isalpha.c ft_memchr.c ft_memset.c ft_strlcpy.c \
              ft_memmove.c ft_strlcat.c ft_strnstr.c
 
 PART2_SRCS = ft_substr.c ft_strjoin.c ft_strtrim.c ft_split.c ft_itoa.c ft_strmapi.c \
-			 ft_striteri.c
+			 ft_striteri.c ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c
 
 PART1_OBJS = $(addprefix $(PART1_DIR)/, $(PART1_SRCS:.c=.o))
 PART2_OBJS = $(addprefix $(PART2_DIR)/, $(PART2_SRCS:.c=.o))

@@ -6,13 +6,15 @@
 /*   By: ele-lean <ele-lean@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 17:38:43 by ele-lean          #+#    #+#             */
-/*   Updated: 2024/10/16 15:11:38 by ele-lean         ###   ########.fr       */
+/*   Updated: 2024/10/16 15:57:34 by ele-lean         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include "include/libft.h"
+#include <stdio.h>
 #include <stdlib.h>
+#include <fcntl.h>
+#include <unistd.h>
 
 void	test_ft_atoi(void)
 {
@@ -371,7 +373,8 @@ void	test_ft_strmapi(void)
 	printf("ft_strmapi(\"test\", NULL) = \"%s\" (Expected: NULL)\n", result6);
 	free(result6);
 }
-
+#include <fcntl.h> // Pour O_RDWR
+#include <unistd.h>
 void	ftttoupper(unsigned int index, char *c)
 {
 	if (*c >= 'a' && *c <= 'z')
@@ -398,6 +401,77 @@ void test_ft_striteri(void)
 	printf("After ft_striteri on empty string: \"%s\" (Expected: \"\")\n", str4);
 }
 
+void	test_ft_putchar_fd(void)
+{
+	printf("\n(8/11) Testing ft_putchar_fd:\n");
+	ft_putchar_fd('A', STDOUT_FILENO);
+	ft_putchar_fd('\n', STDOUT_FILENO);
+	int	fd = open("test_output.txt", O_RDWR | O_CREAT | O_TRUNC, 0644);
+	if (fd == -1)
+	{
+		perror("Failed to open file");
+		return ;
+	}
+	ft_putchar_fd('B', fd);
+	ft_putchar_fd('\n', fd);
+	close(fd);
+	printf("Character 'B' written to 'test_output.txt'.\n");
+}
+
+void test_ft_putstr_fd(void)
+{
+	printf("\n(9/11) Testing ft_putstr_fd:\n");
+	ft_putstr_fd("Hello, World!", STDOUT_FILENO);
+	ft_putstr_fd("\n", STDOUT_FILENO);
+	int	fd = open("test_output.txt", O_RDWR | O_CREAT | O_TRUNC, 0644);
+	if (fd == -1)
+	{
+		perror("Failed to open file");
+		return ;
+	}
+	ft_putstr_fd("Hello, file!", fd);
+	ft_putstr_fd("\n", fd);
+	close(fd);
+	printf("String 'Hello, file!' written to 'test_output.txt'.\n");
+}
+
+void	test_ft_putendl_fd(void)
+{
+	printf("\n(10/11) Testing ft_putendl_fd:\n");
+	ft_putendl_fd("Hello, World!", STDOUT_FILENO);
+	int fd = open("test_output.txt", O_RDWR | O_CREAT | O_TRUNC, 0644);
+	if (fd == -1)
+	{
+		perror("Failed to open file");
+		return ;
+	}
+	ft_putendl_fd("Hello, file!", fd);
+	close(fd);
+	printf("String 'Hello, file!' written to 'test_output.txt' with a newline.\n");
+}
+
+void test_ft_putnbr_fd(void)
+{
+	printf("\n(11/11) Testing ft_putnbr_fd:\n");
+	printf("Output to STDOUT: ");
+	ft_putnbr_fd(42, STDOUT_FILENO);
+	ft_putchar_fd('\n', STDOUT_FILENO);
+	int fd = open("test_output.txt", O_RDWR | O_CREAT | O_TRUNC, 0644);
+	if (fd == -1)
+	{
+		perror("Failed to open file");
+		return ;
+	}
+	ft_putnbr_fd(12345, fd);
+	ft_putchar_fd('\n', fd);
+	ft_putnbr_fd(-9876, fd);
+	ft_putchar_fd('\n', fd);
+	ft_putnbr_fd(0, fd);
+	ft_putchar_fd('\n', fd);
+	close(fd);
+	printf("Numbers '12345', '-9876', and '0' written to 'test_output.txt'.\n");
+	unlink("test_output.txt");
+}
 
 int	main(void)
 {
@@ -433,5 +507,9 @@ int	main(void)
 	test_ft_itoa();
 	test_ft_strmapi();
 	test_ft_striteri();
+	test_ft_putchar_fd();
+	test_ft_putstr_fd();
+	test_ft_putendl_fd();
+	test_ft_putnbr_fd();
 	return (0);
 }
