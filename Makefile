@@ -5,6 +5,7 @@ NAME = libft.a
 PART1_DIR = ft/part1
 PART2_DIR = ft/part2
 PART_BONUS_DIR = ft/bonus
+PART_PRINTF_DIR = ft_printf
 INCLUDE_DIR = include
 
 PART1_SRCS = ft_atoi.c ft_isalpha.c ft_memchr.c ft_memset.c ft_strlcpy.c \
@@ -20,12 +21,16 @@ PART_BONUS_SRCS = ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c \
 				  ft_lstadd_back.c ft_lstdelone.c ft_lstclear.c ft_lstiter.c \
 				  ft_lstmap.c
 
+PART_PRINTF_SRCS = ft_printf.c
+
 PART1_OBJS = $(addprefix $(PART1_DIR)/, $(PART1_SRCS:.c=.o))
 PART2_OBJS = $(addprefix $(PART2_DIR)/, $(PART2_SRCS:.c=.o))
 PART_BONUS_OBJS = $(addprefix $(PART_BONUS_DIR)/, $(PART_BONUS_SRCS:.c=.o))
+PART_PRINTF_OBJS = $(addprefix $(PART_PRINTF_DIR)/, $(PART_PRINTF_SRCS:.c=.o))
 
 OBJS = $(PART1_OBJS) $(PART2_OBJS)
 BONUS_OBJS = $(OBJS) $(PART_BONUS_OBJS)
+PRINTF_OBJS = $(BONUS_OBJS) $(PART_PRINTF_OBJS)
 
 all: $(NAME)
 
@@ -34,6 +39,9 @@ $(NAME): $(OBJS)
 
 bonus: $(BONUS_OBJS)
 	ar rcs $(NAME) $(BONUS_OBJS)
+
+printf: $(PRINTF_OBJS)
+	ar rcs $(NAME) $(PRINTF_OBJS)
 
 $(PART1_DIR)/%.o: $(PART1_DIR)/%.c $(INCLUDE_DIR)/libft.h
 	$(CC) $(CFLAGS) -I$(INCLUDE_DIR) -c $< -o $@
@@ -44,8 +52,11 @@ $(PART2_DIR)/%.o: $(PART2_DIR)/%.c $(INCLUDE_DIR)/libft.h
 $(PART_BONUS_DIR)/%.o: $(PART_BONUS_DIR)/%.c $(INCLUDE_DIR)/libft.h
 	$(CC) $(CFLAGS) -I$(INCLUDE_DIR) -c $< -o $@
 
+$(PART_PRINTF_DIR)/%.o: $(PART_PRINTF_DIR)/%.c $(INCLUDE_DIR)/libft.h
+	$(CC) $(CFLAGS) -I$(INCLUDE_DIR) -c $< -o $@
+
 clean:
-	rm -f $(PART1_OBJS) $(PART2_OBJS) $(PART_BONUS_OBJS)
+	rm -f $(PART1_OBJS) $(PART2_OBJS) $(PART_BONUS_OBJS) $(PART_PRINTF_OBJS)
 
 fclean: clean
 	rm -f $(NAME)

@@ -6,7 +6,7 @@
 /*   By: ele-lean <ele-lean@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 19:20:53 by ele-lean          #+#    #+#             */
-/*   Updated: 2024/10/15 18:00:23 by ele-lean         ###   ########.fr       */
+/*   Updated: 2024/10/17 14:10:44 by ele-lean         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ int	ft_atoi(char *str)
 	int	i;
 	int	sign;
 	int	result;
+
 
 	i = 0;
 	sign = 1;

@@ -1,28 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   test_printf.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ele-lean <ele-lean@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/14 15:45:45 by ele-lean          #+#    #+#             */
-/*   Updated: 2024/10/14 15:48:22 by ele-lean         ###   ########.fr       */
+/*   Created: 2024/10/17 15:37:40 by ele-lean          #+#    #+#             */
+/*   Updated: 2024/10/17 16:22:31 by ele-lean         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "include/libft.h"
+#include <stdio.h>
 
-void	*ft_bzero(void *s, size_t n)
+int	main(void)
 {
-	size_t			i;
-	unsigned char	*ptr;
-
-	ptr = (unsigned char *)s;
-	i = 0;
-	while (i < n)
-	{
-		ptr[i] = '\0';
-		i++;
-	}
-	return (s);
+	printf("1: test\n");
+	ft_printf("1: test");
+	printf("\n2: test \"\\n\"\n");
+	ft_printf("2: avant \"\\n\"\napres\n");
+	ft_printf("1: tes%03.1");
 }
