@@ -21,7 +21,7 @@ PART_BONUS_SRCS = ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c \
 				  ft_lstadd_back.c ft_lstdelone.c ft_lstclear.c ft_lstiter.c \
 				  ft_lstmap.c
 
-PART_PRINTF_SRCS = ft_printf.c utils.c
+PART_PRINTF_SRCS = ft_printf.c utils.c print_args.c print_argsbis.c manage_flags.c
 
 PART1_OBJS = $(addprefix $(PART1_DIR)/, $(PART1_SRCS:.c=.o))
 PART2_OBJS = $(addprefix $(PART2_DIR)/, $(PART2_SRCS:.c=.o))

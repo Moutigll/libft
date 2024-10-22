@@ -6,13 +6,13 @@
 /*   By: ele-lean <ele-lean@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/19 13:20:15 by ele-lean          #+#    #+#             */
-/*   Updated: 2024/10/19 18:23:48 by ele-lean         ###   ########.fr       */
+/*   Updated: 2024/10/22 20:42:03 by ele-lean         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 
-int	ft_print_addr(unsigned long long addr)
+int	paddr(unsigned long long addr, int mode)
 {
 	char	buffer[17];
 	char	*hex;
@@ -21,7 +21,8 @@ int	ft_print_addr(unsigned long long addr)
 	hex = "0123456789abcdef";
 	if (addr == 0)
 	{
-		ft_putstr_fd("(nil)", 1);
+		if (mode == 1)
+			ft_putstr_fd("(nil)", 1);
 		return (5);
 	}
 	i = 16;
@@ -33,30 +34,39 @@ int	ft_print_addr(unsigned long long addr)
 		addr = addr / 16;
 		i--;
 	}
+	if (mode == 0)
+		return (17 - i);
 	ft_putstr_fd("0x", 1);
-	ft_putstr_fd(&buffer[i + 1], 1);
-	return (16);
+	return (ft_putstr_fd(&buffer[i + 1], 1) + 2);
 }
 
-int	ft_print_hex(int nbr, int f)
+int	phex(unsigned int nbr, int f, int mode)
 {
 	char	*hex;
-	char	*hex_maj;
+	char	buffer[9];
 	int		i;
 
-	hex = "0123456789abcdef";
-	hex_maj = "0123456789ABCDEF";
+	if (f == 0)
+		hex = "0123456789abcdef";
+	else
+		hex = "0123456789ABCDEF";
+	if (nbr == 0)
+	{
+		if (mode == 1)
+			ft_putchar_fd('0', 1);
+		return (1);
+	}
 	i = 0;
 	while (nbr > 0)
 	{
-		if (f == 0)
-			ft_putchar_fd(hex[nbr % 16], 1);
-		else
-			ft_putchar_fd(hex_maj[nbr % 16], 1);
-		nbr = nbr / 16;
-		i++;
+		buffer[i++] = hex[nbr % 16];
+		nbr /= 16;
 	}
-	return (i);
+	if (mode == 0)
+		return (i);
+	while (--i >= 0)
+		ft_putchar_fd(buffer[i], 1);
+	return (i + 1);
 }
 
 static int	gesize_t(unsigned int n)
