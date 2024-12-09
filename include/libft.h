@@ -6,14 +6,16 @@
 /*   By: ele-lean <ele-lean@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 14:47:48 by ele-lean          #+#    #+#             */
-/*   Updated: 2024/10/22 20:43:05 by ele-lean         ###   ########.fr       */
+/*   Updated: 2024/12/08 06:47:00 by ele-lean         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
 #include <stdlib.h>
+#include <limits.h>
 #include <unistd.h>
+#include <fcntl.h>
 
 typedef struct s_list
 {
@@ -22,7 +24,7 @@ typedef struct s_list
 }					t_list;
 
 //Part1
-int				ft_atoi(char *str);
+int				ft_atoi(const char *str);
 void			*ft_bzero(void *s, size_t n);
 void			*ft_calloc(size_t nmemb, size_t size);
 int				ft_isalnum(int c);
@@ -45,6 +47,7 @@ char			*ft_strnstr(const char *big, const char *little, size_t len);
 char			*ft_strrchr(const char *s, int c);
 int				ft_tolower(int c);
 int				ft_toupper(int c);
+
 //Part2
 char			*ft_substr(char const *s, unsigned int start, size_t len);
 char			*ft_strjoin(char const *s1, char const *s2);
@@ -57,6 +60,7 @@ void			ft_putchar_fd(char c, int fd);
 int				ft_putstr_fd(char *s, int fd);
 void			ft_putendl_fd(char *s, int fd);
 void			ft_putnbr_fd(int n, int fd);
+
 //PART BONUS
 t_list			*ft_lstnew(void *content);
 void			ft_lstadd_front(t_list **lst, t_list *new);
@@ -68,5 +72,17 @@ void			ft_lstclear(t_list **lst, void (*del)(void*));
 void			ft_lstiter(t_list *lst, void (*f)(void *));
 t_list			*ft_lstmap(t_list *lst, void *(*f)(void *),
 					void (*del)(void *));
+//EXTRA
+long			ft_atol(const char *str);
+int				get_sign(const char **str);
+int				ft_tablen(void **tab);
+void			free_tab(void **tab);
+void			free_list(t_list *list);
+int				ft_getnline(char *file);
+
 //PRINTF
-int	ft_printf(const char *str, ...);
+int				ft_printf(const char *str, ...);
+
+//GET_NEXT_LINE
+
+char			*get_next_line(int fd);

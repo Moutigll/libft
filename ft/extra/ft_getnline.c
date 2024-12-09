@@ -1,26 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstsize.c                                       :+:      :+:    :+:   */
+/*   ft_getnline.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ele-lean <ele-lean@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/16 17:50:02 by ele-lean          #+#    #+#             */
-/*   Updated: 2024/10/16 17:53:37 by ele-lean         ###   ########.fr       */
+/*   Created: 2024/12/08 06:36:32 by ele-lean          #+#    #+#             */
+/*   Updated: 2024/12/08 06:46:36 by ele-lean         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_lstsize(t_list *lst)
+int	ft_getnline(char *file)
 {
-	int	i;
+	int		fd;
+	char	*line;
+	int		n;
 
-	i = 0;
-	while (lst)
+	fd = open(file, O_RDONLY);
+	if (fd < 0)
+		return (-1);
+	line = get_next_line(fd);
+	n = 0;
+	while (line)
 	{
-		i++;
-		lst = lst->next;
+		n++;
+		free(line);
+		line = get_next_line(fd);
 	}
-	return (i);
+	close(fd);
+	return (n);
 }

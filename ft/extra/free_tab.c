@@ -1,26 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstsize.c                                       :+:      :+:    :+:   */
+/*   free_tab.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ele-lean <ele-lean@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/16 17:50:02 by ele-lean          #+#    #+#             */
-/*   Updated: 2024/10/16 17:53:37 by ele-lean         ###   ########.fr       */
+/*   Created: 2024/12/08 06:12:40 by ele-lean          #+#    #+#             */
+/*   Updated: 2024/12/08 06:12:51 by ele-lean         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_lstsize(t_list *lst)
+void	free_tab(void **tab)
 {
 	int	i;
 
+	if (!tab)
+		return ;
 	i = 0;
-	while (lst)
+	while (tab[i])
 	{
+		free(tab[i]);
 		i++;
-		lst = lst->next;
 	}
-	return (i);
+	free(tab);
 }
