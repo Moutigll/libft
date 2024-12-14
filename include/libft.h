@@ -6,7 +6,7 @@
 /*   By: ele-lean <ele-lean@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 14:47:48 by ele-lean          #+#    #+#             */
-/*   Updated: 2024/12/08 06:47:00 by ele-lean         ###   ########.fr       */
+/*   Updated: 2024/12/14 19:43:20 by ele-lean         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ int				ft_tablen(void **tab);
 void			free_tab(void **tab);
 void			free_list(t_list *list);
 int				ft_getnline(char *file);
+int				ft_strcmp(const char *s1, const char *s2);
 
 //PRINTF
 int				ft_printf(const char *str, ...);
