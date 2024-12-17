@@ -6,7 +6,7 @@
 #    By: ele-lean <ele-lean@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/16 14:24:19 by ele-lean          #+#    #+#              #
-#    Updated: 2024/12/16 12:58:53 by ele-lean         ###   ########.fr        #
+#    Updated: 2024/12/17 21:06:55 by ele-lean         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,7 @@ PART_BONUS_SRCS = ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c \
 				  ft_lstmap.c
 
 PART_EXTRA_SRCS = ft_atol.c ft_tablen.c free_tab.c free_list.c ft_getnline.c ft_strcmp.c \
-				  ft_strpos.c
+				  ft_strpos.c ft_strfreejoin.c ft_addchar.c
 
 PART_PRINTF_SRCS = ft_printf.c utils.c print_args.c print_argsbis.c manage_flags.c
 
