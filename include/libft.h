@@ -6,7 +6,7 @@
 /*   By: ele-lean <ele-lean@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 14:47:48 by ele-lean          #+#    #+#             */
-/*   Updated: 2024/12/18 16:57:47 by ele-lean         ###   ########.fr       */
+/*   Updated: 2025/01/06 09:28:04 by ele-lean         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ int				ft_strpos(const char *str, char c);
 char			*ft_strfreejoin(char *s1, char *s2);
 char			*ft_addchar(char *str, char c);
 char			*ft_strcut(char *str, char c);
+void			*ft_lstget(t_list *list, int index);
 
 //PRINTF
 int				ft_printf(const char *str, ...);
