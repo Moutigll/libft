@@ -6,7 +6,7 @@
 /*   By: ele-lean <ele-lean@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 14:47:48 by ele-lean          #+#    #+#             */
-/*   Updated: 2025/01/06 09:28:04 by ele-lean         ###   ########.fr       */
+/*   Updated: 2025/01/07 11:57:10 by ele-lean         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,9 @@ char			*ft_strfreejoin(char *s1, char *s2);
 char			*ft_addchar(char *str, char c);
 char			*ft_strcut(char *str, char c);
 t_list			*ft_lstget(t_list *list, int index);
+void			**ft_realloctab(void **array, size_t old_size, size_t new_size);
+void			ft_removenode(t_list **head,
+					void *to_remove, void (*del)(void *));
 
 //PRINTF
 int				ft_printf(const char *str, ...);

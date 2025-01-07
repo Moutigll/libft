@@ -1,30 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstget.c                                        :+:      :+:    :+:   */
+/*   ft_realloctab.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ele-lean <ele-lean@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/06 09:27:28 by ele-lean          #+#    #+#             */
-/*   Updated: 2025/01/07 11:55:43 by ele-lean         ###   ########.fr       */
+/*   Created: 2025/01/07 11:31:51 by ele-lean          #+#    #+#             */
+/*   Updated: 2025/01/07 11:37:45 by ele-lean         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstget(t_list *list, int index)
+void	**ft_realloctab(void **array, size_t old_size, size_t new_size)
 {
-	int	i;
+	void	**new_array;
+	size_t	i;
 
-	if (!list || index < 0)
+	new_array = (void **)malloc(new_size * sizeof(void *));
+	if (!new_array)
 		return (NULL);
 	i = 0;
-	while (list)
+	while (i < old_size && i < new_size)
 	{
-		if (i == index)
-			return (list);
-		list = list->next;
+		new_array[i] = array[i];
 		i++;
 	}
-	return (NULL);
+	while (i < new_size)
+	{
+		new_array[i] = NULL;
+		i++;
+	}
+	free(array);
+	return (new_array);
 }
