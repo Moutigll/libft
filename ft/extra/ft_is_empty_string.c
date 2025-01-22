@@ -6,7 +6,7 @@
 /*   By: ele-lean <ele-lean@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 17:56:21 by ele-lean          #+#    #+#             */
-/*   Updated: 2025/01/22 17:56:42 by ele-lean         ###   ########.fr       */
+/*   Updated: 2025/01/22 18:07:11 by ele-lean         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ int	ft_is_empty_string(char *str)
 		return (1);
 	while (*str)
 	{
-		if (!ft_isspace(*str))
+		if (str[0] != ' ' && str[0] != '\t' && str[0] != '\n'
+			&& str[0] != '\v' && str[0] != '\f' && str[0] != '\r')
 			return (0);
 		str++;
 	}
