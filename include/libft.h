@@ -6,7 +6,7 @@
 /*   By: ele-lean <ele-lean@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 14:47:48 by ele-lean          #+#    #+#             */
-/*   Updated: 2025/01/22 22:41:09 by ele-lean         ###   ########.fr       */
+/*   Updated: 2025/01/25 22:49:17 by ele-lean         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,7 @@ char			*ft_strjoin_free(char *s1, char *s2,
 					int free_s1, int free_s2);
 char			*ft_strstr(char *haystack, char *needle);
 char			*ft_str_replace(char *str, char *to_replace, char *replacement);
+void			ft_remove_duplicates(char *str);
 
 //PRINTF
 int				ft_printf(const char *str, ...);
