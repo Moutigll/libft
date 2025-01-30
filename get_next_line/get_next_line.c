@@ -6,7 +6,7 @@
 /*   By: ele-lean <ele-lean@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 13:25:41 by ele-lean          #+#    #+#             */
-/*   Updated: 2024/12/01 19:12:29 by ele-lean         ###   ########.fr       */
+/*   Updated: 2025/01/30 13:33:30 by ele-lean         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,11 +51,8 @@ void	create_list(t_list **list, int fd, t_newline *line)
 		if (!buffer)
 			return ;
 		size = read(fd, buffer, BUFFER_SIZE);
-		if (!size)
-		{
-			free(buffer);
-			return ;
-		}
+		if (!size || size == -1)
+			return (free(buffer));
 		buffer[size] = '\0';
 		ft_lstaddd_back(list, buffer, fd);
 	}
