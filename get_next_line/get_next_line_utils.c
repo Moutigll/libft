@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ele-lean <ele-lean@student.42.fr>          +#+  +:+       +#+        */
+/*   By: moutig <moutig@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 13:25:58 by ele-lean          #+#    #+#             */
-/*   Updated: 2024/12/01 19:12:22 by ele-lean         ###   ########.fr       */
+/*   Updated: 2025/02/07 02:35:17 by moutig           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-t_list	*ft_lstlast(t_list *lst)
+t_list	*ft_lstlast_gnl(t_list *lst)
 {
 	if (!lst)
 		return (NULL);
@@ -26,7 +26,7 @@ void	ft_lstaddd_back(t_list **list, char *buffer, int fd)
 	t_list	*new_node;
 	t_list	*last_node;
 
-	last_node = ft_lstlast(list[fd]);
+	last_node = ft_lstlast_gnl(list[fd]);
 	new_node = malloc(sizeof(t_list));
 	if (!new_node)
 		return ;
