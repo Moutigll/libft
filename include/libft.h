@@ -6,7 +6,7 @@
 /*   By: ele-lean <ele-lean@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 14:47:48 by ele-lean          #+#    #+#             */
-/*   Updated: 2025/01/30 14:26:27 by ele-lean         ###   ########.fr       */
+/*   Updated: 2025/02/07 23:01:21 by ele-lean         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,6 @@ void			free_list(t_list *list);
 int				ft_getnline(char *file);
 int				ft_strcmp(const char *s1, const char *s2);
 int				ft_strpos(const char *str, char c);
-char			*ft_strfreejoin(char *s1, char *s2);
 char			*ft_addchar(char *str, char c);
 char			*ft_strcut(char *str, char c);
 t_list			*ft_lstget(t_list *list, int index);

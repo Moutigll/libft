@@ -6,7 +6,7 @@
 #    By: ele-lean <ele-lean@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/16 14:24:19 by ele-lean          #+#    #+#              #
-#    Updated: 2025/01/30 14:28:35 by ele-lean         ###   ########.fr        #
+#    Updated: 2025/02/07 23:01:34 by ele-lean         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,7 @@ PART_BONUS_SRCS = ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c \
 				  ft_lstmap.c
 
 PART_EXTRA_SRCS = ft_atol.c ft_tablen.c free_tab.c free_list.c ft_getnline.c ft_strcmp.c \
-				  ft_strpos.c ft_strfreejoin.c ft_addchar.c ft_strcut.c ft_lstget.c \
+				  ft_strpos.c ft_addchar.c ft_strcut.c ft_lstget.c \
 				  ft_realloctab.c ft_removenode.c ft_is_empty_string.c ft_strjoin_free.c \
 				  ft_strstr.c ft_str_replace.c ft_remove_duplicates.c ft_lstinsert_after.c \
 				  ft_strndup.c
