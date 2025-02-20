@@ -6,12 +6,12 @@
 #    By: ele-lean <ele-lean@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/16 14:24:19 by ele-lean          #+#    #+#              #
-#    Updated: 2025/02/07 23:01:34 by ele-lean         ###   ########.fr        #
+#    Updated: 2025/02/20 17:00:11 by ele-lean         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = cc
-CFLAGS = -Wall -Werror -Wextra -I$(INCLUDE_DIR) -fPIC
+CFLAGS = -g -Wall -Werror -Wextra -I$(INCLUDE_DIR) -fPIC
 NAME = libft.a
 
 PART1_DIR = ft/part1
@@ -39,7 +39,7 @@ PART_EXTRA_SRCS = ft_atol.c ft_tablen.c free_tab.c free_list.c ft_getnline.c ft_
 				  ft_strpos.c ft_addchar.c ft_strcut.c ft_lstget.c \
 				  ft_realloctab.c ft_removenode.c ft_is_empty_string.c ft_strjoin_free.c \
 				  ft_strstr.c ft_str_replace.c ft_remove_duplicates.c ft_lstinsert_after.c \
-				  ft_strndup.c
+				  ft_strndup.c ft_atoi_base.c
 
 PART_PRINTF_SRCS = ft_printf.c utils.c print_args.c print_argsbis.c manage_flags.c
 
