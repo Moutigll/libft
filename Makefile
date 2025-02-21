@@ -6,7 +6,7 @@
 #    By: ele-lean <ele-lean@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/16 14:24:19 by ele-lean          #+#    #+#              #
-#    Updated: 2025/02/20 17:00:11 by ele-lean         ###   ########.fr        #
+#    Updated: 2025/02/21 06:39:11 by ele-lean         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,7 @@ PART_BONUS_DIR = ft/bonus
 PART_EXTRA_DIR = ft/extra
 PART_PRINTF_DIR = ft_printf
 PART_GET_NEXT_LINE_DIR = get_next_line
+PART_MLX_DIR = mlx
 INCLUDE_DIR = include
 
 PART1_SRCS = ft_atoi.c ft_isalpha.c ft_memchr.c ft_memset.c ft_strlcpy.c \
@@ -39,11 +40,13 @@ PART_EXTRA_SRCS = ft_atol.c ft_tablen.c free_tab.c free_list.c ft_getnline.c ft_
 				  ft_strpos.c ft_addchar.c ft_strcut.c ft_lstget.c \
 				  ft_realloctab.c ft_removenode.c ft_is_empty_string.c ft_strjoin_free.c \
 				  ft_strstr.c ft_str_replace.c ft_remove_duplicates.c ft_lstinsert_after.c \
-				  ft_strndup.c ft_atoi_base.c
+				  ft_strndup.c
 
 PART_PRINTF_SRCS = ft_printf.c utils.c print_args.c print_argsbis.c manage_flags.c
 
 PART_GET_NEXT_LINE_SRCS = get_next_line.c get_next_line_utils.c
+
+PART_MLX_SRCS = ft_mlx_put_string.c parse_font.c
 
 PART1_OBJS = $(addprefix $(PART1_DIR)/, $(PART1_SRCS:.c=.o))
 PART2_OBJS = $(addprefix $(PART2_DIR)/, $(PART2_SRCS:.c=.o))
@@ -51,8 +54,9 @@ PART_BONUS_OBJS = $(addprefix $(PART_BONUS_DIR)/, $(PART_BONUS_SRCS:.c=.o))
 PART_EXTRA_OBJS = $(addprefix $(PART_EXTRA_DIR)/, $(PART_EXTRA_SRCS:.c=.o))
 PART_PRINTF_OBJS = $(addprefix $(PART_PRINTF_DIR)/, $(PART_PRINTF_SRCS:.c=.o))
 PART_GET_NEXT_LINE_OBJS = $(addprefix $(PART_GET_NEXT_LINE_DIR)/, $(PART_GET_NEXT_LINE_SRCS:.c=.o))
+PART_MLX_OBJ = $(addprefix $(PART_MLX_DIR)/, $(PART_MLX_SRCS:.c=.o))
 
-OBJS = $(PART1_OBJS) $(PART2_OBJS) $(PART_BONUS_OBJS) $(PART_EXTRA_OBJS) $(PART_PRINTF_OBJS) $(PART_GET_NEXT_LINE_OBJS)
+OBJS = $(PART1_OBJS) $(PART2_OBJS) $(PART_BONUS_OBJS) $(PART_EXTRA_OBJS) $(PART_PRINTF_OBJS) $(PART_GET_NEXT_LINE_OBJS) $(PART_MLX_OBJ)
 
 all: $(NAME)
 

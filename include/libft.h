@@ -6,7 +6,7 @@
 /*   By: ele-lean <ele-lean@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 14:47:48 by ele-lean          #+#    #+#             */
-/*   Updated: 2025/02/20 16:59:45 by ele-lean         ###   ########.fr       */
+/*   Updated: 2025/02/21 06:24:42 by ele-lean         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include <limits.h>
 #include <unistd.h>
 #include <fcntl.h>
+#include <stdio.h>
 
 typedef struct s_list
 {
@@ -101,5 +102,48 @@ int				ft_atoi_base(char *str, char *base);
 int				ft_printf(const char *str, ...);
 
 //GET_NEXT_LINE
-
 char			*get_next_line(int fd);
+
+//MLX
+
+#define FONT_SIZE 1
+#define FONT_SPACING 5
+#define FONT_SPACE 30
+
+typedef struct s_mlx_img
+{
+	void	*img;
+	char	*addr;
+	int		bpp;
+	int		size_line;
+	int		endian;
+	int		width;
+	int		height;
+}	t_mlx_img;
+
+typedef struct s_mlx_letter
+{
+	int	start_x;
+	int	start_y;
+	int	end_x;
+	int	end_y;
+	int	align;
+}	t_mlx_letter;
+typedef struct s_mlx_font
+{
+	t_mlx_img		*font;
+	t_mlx_img		*screen;
+	char			*letters_str;
+	t_mlx_letter	*letters;
+	int				letter_spacing;
+	int				font_size;
+	int				color;
+	char			*path;
+	int				space_width;
+}	t_mlx_font;
+
+int				mlx_new_font(t_mlx_font *font);
+void			ft_mlx_put_string(t_mlx_font *font, char *str, int x, int y);
+void			clear_mlx_font(t_mlx_font *font);
+
+int				mlx_destroy_image(void *mlx_ptr, void *img_ptr);
