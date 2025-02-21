@@ -6,7 +6,7 @@
 /*   By: ele-lean <ele-lean@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 23:07:26 by ele-lean          #+#    #+#             */
-/*   Updated: 2025/02/21 07:06:48 by ele-lean         ###   ########.fr       */
+/*   Updated: 2025/02/21 08:09:53 by ele-lean         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,8 @@ void	ft_mlx_put_string(t_mlx_font *font, char *str, int x, int y)
 		if (str[i] == ' ')
 		{
 			x += font->space_width * font->font_size;
-			break ;
+			i++;
+			continue ;
 		}
 		j = 0;
 		while (font->letters_str[j])

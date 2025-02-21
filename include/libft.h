@@ -6,7 +6,7 @@
 /*   By: ele-lean <ele-lean@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 14:47:48 by ele-lean          #+#    #+#             */
-/*   Updated: 2025/02/21 06:24:42 by ele-lean         ###   ########.fr       */
+/*   Updated: 2025/02/21 08:47:31 by ele-lean         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,7 @@ void			ft_remove_duplicates(char *str);
 char			*ft_strndup(const char *s, size_t n);
 void			ft_lstinsert_after(t_list *current, t_list *new_node);
 int				ft_atoi_base(char *str, char *base);
+char			*ft_dtoa(double n, int precision);
 
 //PRINTF
 int				ft_printf(const char *str, ...);
