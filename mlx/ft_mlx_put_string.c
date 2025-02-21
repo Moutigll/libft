@@ -6,7 +6,7 @@
 /*   By: ele-lean <ele-lean@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 23:07:26 by ele-lean          #+#    #+#             */
-/*   Updated: 2025/02/21 06:29:04 by ele-lean         ###   ########.fr       */
+/*   Updated: 2025/02/21 07:06:48 by ele-lean         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,10 @@ static void	draw_scaled_pixel(t_mlx_font *font, int x, int y, int align)
 	k = 0;
 	while (k < font->font_size)
 	{
-		l = -align * font->font_size;
+		l = 0;
 		while (l < font->font_size)
 		{
-			pixel_index = (y + k)
+			pixel_index = (y + k + (align * font->font_size))
 				* font->screen->size_line + (x + l) * (font->screen->bpp / 8);
 			*(unsigned int *)(font->screen->addr + pixel_index) = font->color;
 			l++;
