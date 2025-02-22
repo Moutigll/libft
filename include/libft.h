@@ -6,7 +6,7 @@
 /*   By: ele-lean <ele-lean@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 14:47:48 by ele-lean          #+#    #+#             */
-/*   Updated: 2025/02/21 08:47:31 by ele-lean         ###   ########.fr       */
+/*   Updated: 2025/02/22 22:59:04 by ele-lean         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,7 +144,7 @@ typedef struct s_mlx_font
 }	t_mlx_font;
 
 int				mlx_new_font(t_mlx_font *font);
-void			ft_mlx_put_string(t_mlx_font *font, char *str, int x, int y);
+int				ft_mlx_put_string(t_mlx_font *font, char *str, int x, int y);
 void			clear_mlx_font(t_mlx_font *font);
 
 int				mlx_destroy_image(void *mlx_ptr, void *img_ptr);
