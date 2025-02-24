@@ -6,7 +6,7 @@
 /*   By: ele-lean <ele-lean@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 23:07:26 by ele-lean          #+#    #+#             */
-/*   Updated: 2025/02/23 00:33:34 by ele-lean         ###   ########.fr       */
+/*   Updated: 2025/02/24 17:52:00 by ele-lean         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	clear_mlx_font(t_mlx_font *font)
 	free_tab((void **)font->letters);
 	free(font->letters_str);
 	free(font->path);
-	mlx_destroy_image(font->screen->img, font->font->img);
+	mlx_destroy_image(font->mlx, font->font->img);
 	free(font->font);
 	free(font);
 }

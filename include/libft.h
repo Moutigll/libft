@@ -6,7 +6,7 @@
 /*   By: ele-lean <ele-lean@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 14:47:48 by ele-lean          #+#    #+#             */
-/*   Updated: 2025/02/22 22:59:04 by ele-lean         ###   ########.fr       */
+/*   Updated: 2025/02/24 17:43:12 by ele-lean         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,6 +141,7 @@ typedef struct s_mlx_font
 	int				color;
 	char			*path;
 	int				space_width;
+	void			*mlx;
 }	t_mlx_font;
 
 int				mlx_new_font(t_mlx_font *font);
